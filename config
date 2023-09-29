@@ -3,9 +3,9 @@ const config = {
     /* don't expose password or any sensitive info, done only for demo */
     host: "localhost",
     user: "root",
-    database: "express_demo",
+    database: "express_db",
     connectTimeout: 60000
-  },
+  }, 
   listPerPage: 10,
 };
 module.exports = config;
