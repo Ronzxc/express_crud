@@ -1,7 +1,19 @@
-<h2>Edit form</h2>
-<form action="/updateuser" method="POST"> 
-    <input type="hidden" name="id" value="<%=user.id  %>">  
-    <input type="text" placeholder="firstname" name="firstname" value="<%=user.firstname %> ">  
-    <input type="text" placeholder="lastname" name="lastname" value="<%=user.lastname %> ">  
-    <input type="email" placeholder="Email" name="email" value="<%=user.email  %>">  
-<button type="submit">Update</button></form>
+<!DOCTYPE html>
+<html lang="en" data-theme="wireframe">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Form</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <h2 class="text-center mb-10">Edit Form</h2>
+  <form action="/updateuser" method="POST" class="card w-full max-w-md shadow-xl mx-auto">
+    <input type="hidden" name="id" value="<%=user.id  %>">
+    <input type="text" placeholder="firstname" name="firstname" value="<%=user.firstname %> " class="input input-bordered w-full mb-5" />
+    <input type="text" placeholder="lastname" name="lastname" value="<%=user.lastname %> " class="input input-bordered w-full mb-5" />
+    <input type="email" placeholder="Email" name="email" value="<%=user.email  %> " class="input input-bordered w-full mb-5" />
+    <button type="submit" class="btn btn-primary w-full mt-5">Update</button>
+  </form>
+</body>
+</html>

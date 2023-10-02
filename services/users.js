@@ -2,19 +2,34 @@ const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
 
-async function getMultipleUsers(page = 1){
-  const offset = helper.getOffset(page, config.listPerPage);
+async function getMultipleUsers(page = 1, searchQuery = '', perPage = config.listPerPage) {
+  const offset = (page - 1) * perPage;
+  let query = 'SELECT COUNT(*) as total FROM users';
+  let params = [];
+  
+  if (searchQuery) {
+    query += ` WHERE email LIKE ? OR firstname LIKE ? OR lastname LIKE ?`;
+    params = [`%${searchQuery}%`, `%${searchQuery}%`, `%${searchQuery}%`];
+  }
+  
+  const totalRows = await db.query(query, params);
+  const total = totalRows[0].total;
+
+  // Execute the SQL query with LIMIT and OFFSET
   const rows = await db.query(
-    `SELECT id, firstname, lastname,email  FROM users LIMIT ${offset},${config.listPerPage}`
+    `SELECT id, firstname, lastname, email FROM users ${searchQuery ? 'WHERE email LIKE ? OR firstname LIKE ? OR lastname LIKE ?' : ''} LIMIT ${offset}, ${config.listPerPage}`,
+    params
   );
+
   const users = helper.emptyOrRows(rows);
-  const meta = {page};
+  const meta = { page, total };
 
   return {
     users,
     meta
-  }
+  };
 }
+
 async function getUser(id){
   const row = await db.query(
     `SELECT id, firstname, lastname,email  

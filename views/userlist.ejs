@@ -1,20 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="wireframe">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<script>
+  
+</script>
 <body>
-    <h1>Layout</h1>
-    <%= userList.length  %>
-    <a href="/insertuser"> Create User</a> 
-
-    
-    <ul>
-        <% userList.forEach((user) => { %>
-          <li>Email: <%= user.email %></li>
-          <li>Firstname: <%= user.firstname %></li>
-          <li>Lastname: <%= user.lastname %></li>
+  <button onclick="location.href='/insertuser'" class="btn btn-outline btn-success fixed right-0 top-2">
+    <svg fill="none" stroke="currentColor" class="w-6 h-6 inline-block" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"></path>
+  </svg>
+  Create User
+</button>
+  <div class="w-full bg-neutral text-neutral-content">
+    <div class="container text-center">
+        <h1>USER RECORDS</h1>
+        <h3>Number of Data information</h3><%= userList.length  %>
+    </div>
+  </div>  
+  <div class="search-bar ">
+    <form action="/" method="GET">
+      <input type="text" class="search-input" placeholder="Search" name="q" value="<%= searchQuery %>">
+      <button type="submit" class="search-button">
+        <svg fill="none" stroke="currentColor" class="w-6 h-6 inline-block" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg></button>
+    </form>
+  </div>
+  <div class="container mx-auto px-12">
+    <div class="overflow-x-auto">
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <% userList.forEach((user) => { %>
+            <tr>
+              <th><%= user.id %></th>
+              <td><%= user.firstname %></td>
+              <td><%= user.lastname %></td>
+              <td><%= user.email %></td>
           
-          <li><td><a href="/edituser/<%=user.id%>" class="edit-link" >Edit</a></td></li>
-          <li><td><a href="/deleteuser/<%=user.id%>" class="edit-link" >Delete</a></td></li>
-          
-        <% }) %>
-      </ul>
-    
+             <td class="flex gap-2">
+              <button onclick="location.href='/edituser/<%=user.id%>'" class="btn btn-square btn-outline btn-info edit-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-5l-2-2Z"/></svg>
+              </button>
+                <button onclick="location.href='/deleteuser/<%=user.id%>'" class="btn btn-square btn-outline btn-error edit-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pagination flex justify-center">
+    <%
+      for (let i = 1; i <= totalPages; i++) {
+        const isActive = currentPage === i ? 'active' : '';
+    %>
+    <a href="/?page=<%= i %>&q=<%= searchQuery %>" class="join-item btn <%= isActive %>"><%= i %></a>
+    <%
+      }
+    %>
+  </div>
 </body>
+</html>
+  
+
 

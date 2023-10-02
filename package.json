@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "type": "module"
+    "type": "module",
+    "dev:nodemon": "nodemon ./bin/www",
+    "dev:tailwind": "tailwindcss -i ./static/style.css -o ./public/stylesheets/style.css --watch",
+    "dev": "concurrently \"npm run dev:nodemon\" \"npm run dev:tailwind\" -n \"nodemon|tailwind\" --name-separator\"|\""
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,5 +17,11 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^3.6.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "daisyui": "^3.8.2",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.3"
   }
 }

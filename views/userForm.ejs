@@ -1,15 +1,48 @@
-<form action="/saveUser"  method="POST">  
-    
+<!DOCTYPE html>
+<html lang="en" data-theme="wireframe">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Form</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <style>
+    .card {
+      margin: 0 auto;
+    }
 
-    <label >Firstname</label>
-    <input style="margin: 10px;" type="text" placeholder="Firt Name" name="firstname" required >  
-    <br>
-    <label>Lastname</label>
-    <input style="margin: 10px;"  type="text" placeholder="Last Name" name="lastname" required >  
-    <br>
-    <label>Email</label>
-    <input style="margin: 10px;"  type="email" placeholder="Email" name="email" required >  
-    <br>
-    <button style="margin: 10px;"  type="submit">Submit</button>
-   
-</form>
+    .form-control {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto mt-20">
+    <h1 class="text-center text-4xl font-bold mb-10">User Form</h1>
+    <form action="/saveUser" method="POST" class="card w-full max-w-md shadow-xl bg-base-100">
+      <div class="card-body">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Firstname</span>
+          </label>
+          <input type="text" placeholder="Firt Name" name="firstname" required class="input input-bordered w-full max-w-md" />
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Lastname</span>
+          </label>
+          <input type="text" placeholder="Last Name" name="lastname" required class="input input-bordered w-full max-w-md" />
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" placeholder="Email" name="email" required class="input input-bordered w-full max-w-md" />
+        </div>
+        <div class="form-control">
+          <button type="submit" class="btn btn-primary w-full max-w-md">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
