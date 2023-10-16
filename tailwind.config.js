@@ -12,6 +12,7 @@ module.exports = {
       "emerald", // first one will be the default theme
       "wireframe",
       "forest",
+      "luxury"
     ],
   },
 }

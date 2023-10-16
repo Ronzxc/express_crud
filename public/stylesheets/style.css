@@ -597,6 +597,44 @@ html {
   --rounded-btn: 1.9rem;
 }
 
+[data-theme=luxury] {
+  color-scheme: dark;
+  --pf: 0 0% 93%;
+  --sf: 218 54% 11%;
+  --af: 319 22% 19%;
+  --nf: 28 100% 3%;
+  --pc: 146 0% 19%;
+  --sc: 227 12% 82%;
+  --ac: 322 9% 84%;
+  --inc: 205 27% 15%;
+  --suc: 88 35% 12%;
+  --wac: 52 28% 14%;
+  --erc: 3 31% 15%;
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 1.9rem;
+  --animation-btn: 0.25s;
+  --animation-input: .2s;
+  --btn-text-case: uppercase;
+  --btn-focus-scale: 0.95;
+  --border-btn: 1px;
+  --tab-border: 1px;
+  --tab-radius: 0.5rem;
+  --p: 0 0% 100%;
+  --s: 218 54% 18%;
+  --a: 319 22% 26%;
+  --n: 28 100% 10%;
+  --nc: 44 100% 82%;
+  --b1: 240 10% 4%;
+  --b2: 270 4% 9%;
+  --b3: 270 2% 18%;
+  --bc: 37 67% 58%;
+  --in: 202 100% 70%;
+  --su: 89 62% 52%;
+  --wa: 54 69% 64%;
+  --er: 0 100% 72%;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
